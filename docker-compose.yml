@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  postgres-database:
+    image: postgres
+    container_name: 'todoapp'
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_PASSWORD=root
+    networks:
+      - backend
+
+networks:
+  backend:

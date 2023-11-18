@@ -1,0 +1,56 @@
+# Global Variable
+@baseUrl = http://localhost:3002/todo
+
+# @name create_todo
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "description": "Swimming",
+  "category": "Sports",
+  "deadline": "2023-12-29T22:03:48-03:00",
+  "status": "In progress"
+}
+
+###
+# @name find_all
+GET {{baseUrl}}
+
+###
+# @name find_by_id
+GET {{baseUrl}}/aef21afe-caa1-4bf8-a2bf-8adb26609ea1
+
+###
+# @name update_todo
+PUT {{baseUrl}}
+Content-Type: application/json
+
+[
+  {
+    "id": "67f317e9-645f-4e70-a654-5a4dc96e9ceb",
+    "description": "Running 5km",
+    "category": "Sports",
+    "status": "overdue",
+    "active": true
+  },
+  {
+    "id": "aef21afe-caa1-4bf8-a2bf-8adb26609ea1",
+    "active": true
+  }
+]
+
+###
+# @name complete_todo
+PATCH {{baseUrl}}/tasks
+Content-Type: application/json
+
+["67f317e9-645f-4e70-a654-5a4dc96e9ceb", "49780d2c-4c57-444a-99d4-603e08ea1be2"]
+
+###
+# @name delete_todo
+DELETE {{baseUrl}}
+Content-Type: application/json
+
+{
+  "ids": ["e4752695-653c-4f88-9baf-19d7e110c42b"]
+}
